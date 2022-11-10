@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Detecção de placa</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-6 mx-auto mt-5 text-center">
+                <h2 class="mb-5">Envie uma imagem</h2>
+
+                <form method="post" action="/" enctype="multipart/form-data">
+                    <div class="row justify-content-center">
+
+                        <div class="col-auto">
+                            <input type="file" name="file" class="form-control" autocomplete="off" accept="image/*"
+                                required>
+                        </div>
+
+                        <div class="col-auto">
+                            <input type="submit" value="enviar" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <h2 class="mb-5"> {{ messages[0] }} </h2>
+                {% endif %}
+                {% endwith %}
+
+
+                {% if filename %}
+                <div class="mt-5">
+                    <img src="{{ url_for('display_image', filename=filename) }}" style="width: 400px;">
+                </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

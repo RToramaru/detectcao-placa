@@ -1,0 +1,1 @@
+static/model_onnx/plate.onnx filter=lfs diff=lfs merge=lfs -text
